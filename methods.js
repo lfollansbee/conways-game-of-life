@@ -47,15 +47,14 @@ function Methods (){
     }
     return neighborCounter
   },
+  this.liveNeighborsCount = [],
   this.countAllLiveNeighbors = function(coordArray, game){
-    var liveNeighborsCount = []
     for (var i = 0; i < coordArray.length; i++) {
       var coords = coordArray[i]
       var liveCount = this.countEachLiveNeighbors(coords, game)
-      liveNeighborsCount.push(liveCount)
+      this.liveNeighborsCount.push(liveCount)
     }
-    console.log("liveNeighborsCount", liveNeighborsCount)
-    return liveNeighborsCount
+    console.log("liveNeighborsCount", this.liveNeighborsCount)
   }
 }
 

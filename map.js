@@ -1,5 +1,5 @@
 function Map (){
-  this.game = [
+  this.map = [
     [0,0,0,0,0,0],
     [0,0,0,0,0,0],
     [0,0,0,0,0,0],
@@ -11,8 +11,8 @@ function Map (){
 
 Map.prototype.checkForLive = function(){
   var counter = 0;
-  for (var i = 0; i < this.game.length; i++) {
-    var row = this.game[i]
+  for (var i = 0; i < this.map.length; i++) {
+    var row = this.map[i]
     for (var j = 0; j < row.length; j++) {
       if(row[j] != 0){
         counter ++
