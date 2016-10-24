@@ -22,5 +22,4 @@ Map.prototype.checkForLive = function(){
   return counter
 }
 
-
 module.exports = Map

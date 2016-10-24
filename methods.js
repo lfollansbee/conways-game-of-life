@@ -2,7 +2,7 @@ var Map = require('./map')
 
 function Methods (){
   this.liveCoordinates = [],
-  this.checkLiveNeighbors = function(array){
+  this.findLiveCells = function(array){
     for (var i = 0; i < array.length; i++) {
       var row = array[i]
       for (var j = 0; j < row.length; j++) {
@@ -11,11 +11,11 @@ function Methods (){
         }
       }
     }
-    console.log(this.liveCoordinates);
+    console.log("liveCoordinates", this.liveCoordinates);
     return this.liveCoordinates
   },
 
-  this.countLiveNeighborsOne = function(coords, game){
+  this.countEachLiveNeighbors = function(coords, game){
     var neighborCounter = 0;
     var row = coords[0]
     var column = coords[1]
@@ -45,15 +45,18 @@ function Methods (){
     if (game[row+1][column+1] === 1){
       neighborCounter ++
     }
-    console.log(neighborCounter);
     return neighborCounter
+  },
+  this.countAllLiveNeighbors = function(coordArray, game){
+    var liveNeighborsCount = []
+    for (var i = 0; i < coordArray.length; i++) {
+      var coords = coordArray[i]
+      var liveCount = this.countEachLiveNeighbors(coords, game)
+      liveNeighborsCount.push(liveCount)
+    }
+    console.log("liveNeighborsCount", liveNeighborsCount)
+    return liveNeighborsCount
   }
-  // this.checkLiveNeighborsAll() = function(){
-  //   var liveNeighbors = []
-  //   for (var i = 0; i < coordArray.length; i++) {
-  //     var coords = coordArray[i]
-  //   }
-  // }
 }
 
 

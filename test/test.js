@@ -2,6 +2,7 @@ var chai = require('chai')
 var expect = chai.expect
 var Map = require("../map")
 var Methods = require("../methods")
+var Game = require("../game")
 
 describe("Map", function(){
   var map = new Map();
@@ -24,7 +25,8 @@ describe("Live Map", function(){
     [0,0,0,0,0,0],
     [0,0,0,0,0,0]
   ]
-  methods.checkLiveNeighbors(map.game);
+  methods.findLiveCells(map.game);
+  var liveNeighborsCount = methods.countAllLiveNeighbors(methods.liveCoordinates, map.game)
 
   it("should equal 4", function(){
     expect(map.checkForLive()).to.equal(5);
@@ -33,9 +35,16 @@ describe("Live Map", function(){
     expect(methods.liveCoordinates.length).to.equal(5)
   })
   it("should check the first coordinate for live neighbors", function(){
-    expect(methods.countLiveNeighborsOne(methods.liveCoordinates[0], map.game)).to.equal(1)
+    expect(methods.countEachLiveNeighbors(methods.liveCoordinates[0], map.game)).to.equal(1)
   })
-  // it("should check the live neighbors for each coordinate", function(){
-  //   expect(methods.countLiveNeighborsAll(methods.liveCoordinates, map.game)).to.be.a('array')
-  // })
+  it("should return an array", function(){
+    expect(liveNeighborsCount).to.be.a('array')
+    expect(liveNeighborsCount.length).to.equal(5)
+    expect(liveNeighborsCount[0]).to.equal(1)
+    expect(liveNeighborsCount[4]).to.equal(2)
+  })
 })
+
+// describe("Game of Life", function(){
+//
+// })
